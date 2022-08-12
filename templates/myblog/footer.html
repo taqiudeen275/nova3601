@@ -1,0 +1,33 @@
+<footer class="footer-area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 single-footer-widget">
+                <h4>NOVA's 360 UPDATE</h4>
+               
+            </div>
+            <div class="col-lg-6 col-md-6 single-footer-widget">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'account:profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'account:logout' %}">Logout</a></li>
+                    {% else %}      
+                    <li><a href="{% url 'account:login' %}">Login</a></li>
+                    <li><a href="{% url 'account:register' %}">Signup</a></li>                    
+                    {% endif %}
+                    
+                </ul>
+            </div>
+            
+            
+        </div>
+        <div class="row footer-bottom d-flex justify-content-between">
+            <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">Site developed by ATS Tech</p>
+            <div class="col-lg-4 col-sm-12 footer-social">
+                <a href="https://web.facebook.com/Novas-360-Updates-103144831703052" target="_blank"><i class="fa fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>

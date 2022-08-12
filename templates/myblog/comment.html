@@ -1,0 +1,42 @@
+<div class="comments-area col-8 mt-5">
+    <h4><span class="badge badge-secondary">{{post.commentCount}}</span> Comments</h4>
+
+    <div class="card">{% for comment in post.get_comments %}
+        <div class="single-comment justify-content-between d-flex">
+            <div class="user justify-content-between d-flex">
+                <div class="card-body">
+                    <p class="comment card-text">
+                        {{comment.content}}
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <div class="small text-muted">
+                            <i class="fa fa-user"></i>
+                            <a href="#">{{comment.user.username}}</a>| {{comment.timestamp|timesince}}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>{% endfor %}
+    </div>
+
+    {% if not post.get_comment %}
+    <p>Currently this post has no comment</p>
+    {% endif %} {% if request.user.is_authenticated %}
+
+    <div class="comment-form">
+        <h4>Leave a comment here</h4>
+        <form class="form-contact comment_form" action="." method="POST" id="commentForm">{% csrf_token %}
+            <div class="row">
+                <div class="col-12">
+                    {{commentform}}
+                </div>
+            </div>
+            <div class="form-group mt-1">
+                <button type="submit" class="btn btn-dark">Comment</button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <a href="{% url 'users:login' %}" class="btn btn-primary">Login to comment</a> {% endif %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "home/head.html" %}
+
+<body>
+    <div class="page">
+        {% include "home/header.html" %} {% block content %} {% endblock content %} {% include "home/footer1.html" %}
+    </div>
+    {% include "home/scripts.html" %}
+    {% block morejs %}
+
+    {% endblock %}  
+    {% if messages %}
+        {% for message in messages %}
+        <script type=text/javascript>
+        toastr.options.progressBar = true;
+        toastr.{{ message.tags }}('{{ message }}')
+        </script>
+        {% endfor %}
+    {% endif %}
+
+</body>
+
+</html>

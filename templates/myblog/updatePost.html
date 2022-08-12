@@ -1,0 +1,21 @@
+{% extends 'myblog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row p-lg-5 m-lg-5 p-sm-2 m-sm-1">
+        <div class="col-12">
+            <h1 class="text-center">EDIT "{{post.title}}"</h1>
+            <div class="col-12 card p-5 m-3 rounded">
+             <form action="." method="POST"  enctype="multipart/form-data">{% csrf_token %} 
+                {{ form.media }}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" value="SAVE">
+            </form>   
+            </div>
+        </div>
+</div>
+</div>
+
+
+{% endblock content %}
+

@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include 'myblog/head.html'%}
+    <body>
+        {% include 'myblog/navbar.html'%}
+        {% block content %}
+        {% endblock content %}
+        {% include 'myblog/footer.html'%}
+        {% include 'myblog/script.html'%}
+    </body>
+</html>

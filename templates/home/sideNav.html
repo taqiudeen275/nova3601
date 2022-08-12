@@ -1,0 +1,39 @@
+<!-- Side Navbar -->
+{% load static %}
+<nav class="side-navbar">
+    <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <!-- User Info-->
+            <div class="sidenav-header-inner text-center">
+
+                <img src="{{user.photo.url}}" alt="profile picture" class="img-fluid rounded-circle">
+                <h2 class="h5">{{user.username}}</h2><span>{{user.user_type}}</span>
+            </div>
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo">
+                <a href="{% url 'blog:index' %}" class="brand-small text-center"> <strong>M</strong><strong class="text-primary">S</strong></a>
+            </div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+                <li>
+                    <a href="{% url 'blog:index' %}"> <i class="icon-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:index' %}"> <i class="fa fa-feed"></i>Blog</a>
+                </li>
+                {% if user.is_superuser %}
+
+                <h5 class="sidenav-heading">For Admin</h5>
+                <li> <a href="{% url 'admin:index' %}"><i class="fa fa-dashboard"></i>360 Admin</a>
+                </li>
+                
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
